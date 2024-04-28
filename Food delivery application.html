@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Food Delivery Application</title>
+    <style>
+        tr{
+            background-color: maroon;
+            color: white;
+            text-align: center;
+        }
+        dt{
+            background-color: maroon;
+            color: white;
+            font-weight: bold;
+        }
+        h1{
+            font-size: xx-large;
+            font-family: 'Times New Roman', Times, serif;
+            font-weight: bold;
+            color: red;
+            text-align: center;
+        }
+    </style>
+    <script>
+        function placeorder(){
+            document.getElementById("order summary").style.display="block";
+            Uname = document.getElementById("txtName");
+            Mobile = document.getElementById("txtMobile");
+            burger = document.getElementById("optburger");
+            roller = document.getElementById("optroller");
+            fries = document.getElementById("optfries");
+
+            var mcost=0;
+            var acost=0;
+            var mname="";
+            var aname="";
+            if(burger.checked){
+                mcost=120;
+                mname=burger.value;
+            }
+            if(roller.checked){
+                mcost=80;
+                mname=roller.value;
+            }
+            if(fries.checked){
+                acost=80;
+                mcost+=acost;
+                aname+=fries.value + "<br>";
+            }
+
+            document.getElementById("lblName").innerHTML=Uname.value;
+            document.getElementById("lblMobile").innerHTML=Mobile.value;
+            document.getElementById("lblMeal").innerHTML=mname;
+            document.getElementById("lbladd").innerHTML=aname;
+            document.getElementById("lblAmount").innerHTML=mcost;
+        
+        }
+    </script>
+</head>
+<body>
+    <div>
+        <h1>Food Order Application</h1>
+        <font size="6">
+            <table width="800" border="2" cellspacing="4" align="center" id="orderform">
+                <tr>
+                    <td>
+                        <img src="https://images.unsplash.com/photo-1594179047519-f347310d3322?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80" width="100" height="100">
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2"><b>Customer Details:</b></td>
+                </tr>
+                <tr>
+                        <td>Customer Name :</td>
+                        <td><input type="text" id="txtName"></td>
+               </tr>
+                <tr>
+                        <td>
+                            Mobile No :
+                        </td>
+                        <td><input type="text" id="txtMobile"></td>
+                </tr>
+                <tr>
+                    <td>
+                        Select a Meal
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <img src="https://images.unsplash.com/photo-1571091718767-18b5b1457add?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8YnVyZ2Vyc3xlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" width="100" height="100">
+                        <br>
+                        <input type="radio" name="meal" id="optburger" value="Burger">Burger(&#8377;120/-)
+                    </td>
+                    <td>
+                        <img src="https://star-mfg.com/wp-content/uploads/2017/03/50SCBBC-dividers-for-web.png" width="100" height="100">
+                        <br>
+                        <input type="radio" name="meal" id="optroller" value="Roller">Roller(&#8377;100/-)
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        Select Ad-on'S
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <img src="https://images.unsplash.com/photo-1576107232684-1279f390859f?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=375&q=80" width="100" height="100"><br>
+                        <input type="checkbox" id="optfries" value="Largefries">Largefries(&#8377;80/-)
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="button" value="place order" onclick="placeorder()">
+                    </td>
+                </tr>
+
+            </table>
+            <br>
+            <dl id="order summary" style="display: none;">
+                <h2>Order Summary</h2>
+                <dt>Customer Name</dt>
+                <dd id="lblName"></dd>
+                <dt>Mobile</dt>
+                <dd id="lblMobile"></dd>
+                <dt>Meal</dt>
+                <dd id="lblMeal"></dd>
+                <dt>AD-on's</dt>
+                <dd id="lbladd"></dd>
+                <dt>Total billing Amount</dt>
+                <dd id="lblAmount"></dd>                
+                <br>
+                <input type="button" value="print Bill" onclick="window.print()">
+            </dl>
+    </div>
+</body>
+</html>
